@@ -1,0 +1,28 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "d2dfb34fff28b774ea7b2cbc2c9ed02d"
+name = "tapitaClone"
+handle = "tapitaclone-1"
+application_url = "https://violence-alternatives-informative-experimental.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "impudentblaster.myshopify.com"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = ""
+
+[auth]
+redirect_urls = [
+  "https://violence-alternatives-informative-experimental.trycloudflare.com/auth/callback",
+  "https://violence-alternatives-informative-experimental.trycloudflare.com/auth/shopify/callback",
+  "https://violence-alternatives-informative-experimental.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-10"
+
+[pos]
+embedded = false
