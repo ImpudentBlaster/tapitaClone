@@ -3,22 +3,23 @@
 client_id = "d2dfb34fff28b774ea7b2cbc2c9ed02d"
 name = "tapitaClone"
 handle = "tapitaclone-1"
-application_url = "https://violence-alternatives-informative-experimental.trycloudflare.com"
+application_url = "https://calendar-atlanta-martha-earrings.trycloudflare.com"
 embedded = true
 
 [build]
 automatically_update_urls_on_dev = true
 dev_store_url = "impudentblaster.myshopify.com"
+include_config_on_deploy = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = ""
+scopes = "read_content,read_online_store_pages,read_products,read_themes,write_content,write_online_store_pages,write_products,write_script_tags,write_themes"
 
 [auth]
 redirect_urls = [
-  "https://violence-alternatives-informative-experimental.trycloudflare.com/auth/callback",
-  "https://violence-alternatives-informative-experimental.trycloudflare.com/auth/shopify/callback",
-  "https://violence-alternatives-informative-experimental.trycloudflare.com/api/auth/callback"
+  "https://calendar-atlanta-martha-earrings.trycloudflare.com/auth/callback",
+  "https://calendar-atlanta-martha-earrings.trycloudflare.com/auth/shopify/callback",
+  "https://calendar-atlanta-martha-earrings.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
