@@ -373,7 +373,7 @@ const ToggleConfigButton = ({ card, navigate }) => {
     // console.log(urlParams , "urlParams")
     const currentUrl = window.location.href;
     console.log(currentUrl, "currentUrl");
-
+    console.log(window.location)
     const urlParams = new URLSearchParams(window.location.search);
 
     // Extract the 'shop' parameter from the URL

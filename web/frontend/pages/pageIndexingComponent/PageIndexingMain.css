@@ -1,0 +1,53 @@
+.pageIndexingMain {
+  padding: 0 4rem;
+}
+ 
+.pageIndexingMain .Polaris-Page{
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.pageIndexingMain .Polaris-Page__Content {
+  width: 100%;
+}
+.pageIndexing-rows {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+}
+.pageIndexing-heading div:nth-child(1){
+    font-weight: 650;
+}
+.pageIndexing-heading div:nth-child(2){
+    font-weight: 650;
+    text-align: center;
+}
+.pageIndexing-heading div:nth-child(3){
+    font-weight: 650;
+    text-align: right;
+}
+
+.pageIndexing-rows div:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.pageIndexing-rows div:nth-child(3){
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.pageIndexing-rows a{
+    color: rgba(0, 106, 255, 1);
+    text-decoration: none;
+}
+.true {
+    color: rgba(37, 174, 65, 0.8);
+    /* font-size: 1.005rem; */
+    font-weight: 500;
+}
+.false {
+    color: rgb(255, 59, 59);
+    font-weight: 500;
+}

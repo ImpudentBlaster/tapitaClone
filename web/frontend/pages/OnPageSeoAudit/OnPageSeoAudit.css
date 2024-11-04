@@ -23,3 +23,11 @@
     padding: 0 0.15rem;
     padding-bottom: 0.25rem;
 }
+.HomeOnPageSeoAudit-main .Polaris-IndexTable__Table--sticky .Polaris-IndexTable__TableHeading--second.Polaris-IndexTable__TableHeading--unselectable {
+    width: 10rem;
+}
+.HomeOnPageSeoAudit-main .Polaris-IndexTable__Table--unselectable.Polaris-IndexTable__Table--sticky .Polaris-IndexTable__TableCell:first-child{
+width: 10rem;
+display: flex;
+justify-content: start;
+}

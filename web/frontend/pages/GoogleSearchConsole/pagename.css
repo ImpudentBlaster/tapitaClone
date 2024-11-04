@@ -181,3 +181,9 @@
     margin-top: 10px;
     /* margin-left: 70%; */
   }
+
+  .searchConsoleMain{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }

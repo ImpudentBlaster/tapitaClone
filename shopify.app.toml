@@ -3,7 +3,7 @@
 client_id = "d2dfb34fff28b774ea7b2cbc2c9ed02d"
 name = "tapitaClone"
 handle = "tapitaclone-1"
-application_url = "https://calendar-atlanta-martha-earrings.trycloudflare.com"
+application_url = "https://involving-disclose-hazardous-union.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_content,read_online_store_pages,read_products,read_themes,write_c
 
 [auth]
 redirect_urls = [
-  "https://calendar-atlanta-martha-earrings.trycloudflare.com/auth/callback",
-  "https://calendar-atlanta-martha-earrings.trycloudflare.com/auth/shopify/callback",
-  "https://calendar-atlanta-martha-earrings.trycloudflare.com/api/auth/callback"
+  "https://involving-disclose-hazardous-union.trycloudflare.com/auth/callback",
+  "https://involving-disclose-hazardous-union.trycloudflare.com/auth/shopify/callback",
+  "https://involving-disclose-hazardous-union.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

@@ -10,9 +10,10 @@ import HomeOnPageSeoAudit from "./HomeOnPageSeoAudit";
 import { TitleBar } from "@shopify/app-bridge-react";
 import { Banner } from "@shopify/polaris";
 import SeoOptimizationMain from "../SeoOptimizationComponent/SeoOptimizationMain";
+import PageIndexingMain from "../pageIndexingComponent/PageIndexingMain";
+import Temp from "../tempFolder/Temp";
 
 function SeoAuditMain() {
-  console.log("seoAuditMain.jsx");
   const [score, setScore] = useState(0);
   const [pageUrlLoaded, setPageUrlLoaded] = useState(false);
   const [urls, setUrls] = useState([]);
@@ -41,7 +42,7 @@ function SeoAuditMain() {
       const result = parser.parse(response.data);
 
       const tempUrls = [];
-      console.log(result, "Result");
+
       if (result && result.sitemapindex && result.sitemapindex.sitemap) {
         result.sitemapindex.sitemap.forEach((item) => {
           tempUrls.push(item.loc);
@@ -49,12 +50,11 @@ function SeoAuditMain() {
       }
 
       setUrls(tempUrls);
-      console.log("Child sitemap URLs fetched:", tempUrls);
 
       await getExactPages(tempUrls);
     } catch (error) {
       // setLinksAuditError(true);
-      setError(true)
+      setError(true);
       setLinksAuditLoading(false);
       // setSeoPageSummaryError(true);
       setSeoPageSummaryLoading(false);
@@ -72,7 +72,7 @@ function SeoAuditMain() {
         async function fetchSitemapPages(sitemapUrl) {
           const response = await axios.get(sitemapUrl);
           const result = parser.parse(response.data);
-          console.log(result);
+
           if (result.urlset) {
             const urls = Array.isArray(result.urlset.url)
               ? result.urlset.url
@@ -94,16 +94,15 @@ function SeoAuditMain() {
         setPageUrls(tempPageUrls);
         setPageUrlLoaded(true);
         setLinksAuditLoading(false);
-        console.log("Page URLs fetched:", tempPageUrls);
       } else {
         setLinksAuditLoading(false);
-        setError(true)
+        setError(true);
         // setLinksAuditError(true);
         // setSeoPageSummaryError(true);
       }
     } catch (error) {
       setLinksAuditLoading(false);
-      setError(true)
+      setError(true);
       // setLinksAuditError(true);
       // setSeoPageSummaryError(true);
       console.error("Error fetching page URLs:", error);
@@ -111,24 +110,24 @@ function SeoAuditMain() {
   }
 
   async function fetchData() {
-    console.log("fetchData");
     setSpinnerLoading(true);
     setSeoPageSummaryLoading(true);
     try {
       const promises = pageUrls.map((url) => getData(url));
       const results = await Promise.all(promises);
-      console.log(results, "result of fetching all the data");
+
       if (results.length < pageUrls.length) {
         setValues({
-          good:{} , critical:{} , improvement:{}
-        })
-        setScore(0)
-        setError(true)
+          good: {},
+          critical: {},
+          improvement: {},
+        });
+        setScore(0);
+        setError(true);
         setSpinnerLoading(false);
         setSeoPageSummaryLoading(false);
         return;
       } else {
-        console.log(results.length , pageUrls.length , "length of result and pageUrl")
         let totalScore = 0;
         let combinedCritical = {};
         let combinedGood = {};
@@ -163,11 +162,11 @@ function SeoAuditMain() {
         setSpinnerLoading(false);
         setSeoPageSummaryLoading(false);
         // setSeoPageSummaryError(false);
-        setError(false)
+        setError(false);
       }
     } catch (error) {
       // setSeoPageSummaryError(true);
-      setError(true)
+      setError(true);
       setSeoPageSummaryLoading(false);
       console.error("Error in fetchData:", error);
     }
@@ -183,7 +182,6 @@ function SeoAuditMain() {
       const response = await axios.get(
         `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}/&key=AIzaSyDhgPizmnR_MJhYGZhOoSklYRA4cKXrCFg&category=performance&category=seo&category=accessibility`
       );
-      console.log(response.data, "Response.data");
       const urlData = {
         urlName: response.data.id,
         lighthouseResult: response.data.lighthouseResult,
@@ -243,9 +241,11 @@ function SeoAuditMain() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-     {error && <div style={{padding:"0 4rem"}}>
-      <Banner status="critical">Failed to load the data</Banner>
-      </div>}
+      {error && (
+        <div style={{ padding: "0 4rem" }}>
+          <Banner status="critical">Failed to load the data</Banner>
+        </div>
+      )}
       <SEOPageSummary
         totalPages={pageUrls}
         seoScore={score}
@@ -261,7 +261,9 @@ function SeoAuditMain() {
         // error={linksAuditError}
       />
       <HomeOnPageSeoAudit totalPages={pageUrls} />
-      <SeoOptimizationMain/>
+      {/* <SeoOptimizationMain/> */}
+      {/* <PageIndexingMain/> */}
+      <Temp />
     </div>
   );
 }

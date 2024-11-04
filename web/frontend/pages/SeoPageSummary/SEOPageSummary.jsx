@@ -15,12 +15,17 @@ import SeoScoreCard from "../SeoScoreCard/SeoScoreCard";
 import { TiDeleteOutline } from "react-icons/ti";
 import { RiErrorWarningLine } from "react-icons/ri";
 import { FaRegCircleCheck } from "react-icons/fa6";
-const SEOSummary = ({ pageSummaryData, seoScore, totalPages ,spinnerLoading , seoPageSummaryLoading,error}) => {
-  console.log("SEOPageSummary.jsx")
+const SEOSummary = ({
+  pageSummaryData,
+  seoScore,
+  totalPages,
+  spinnerLoading,
+  seoPageSummaryLoading,
+  error,
+}) => {
   const [openCritical, setOpenCritical] = useState(false);
   const [openImprovement, setOpenImprovement] = useState(false);
   const [openGood, setOpenGood] = useState(false);
-
 
   Object.keys(pageSummaryData.critical).forEach((key) => {
     if (key in pageSummaryData.good) {
@@ -41,14 +46,18 @@ const SEOSummary = ({ pageSummaryData, seoScore, totalPages ,spinnerLoading , se
     0
   );
 
-
-
   return (
     <div className="seo-summary-main">
-      <SeoScoreCard totalPages={totalPages} seoScore={seoScore} spinnerLoading={spinnerLoading} />
+      <SeoScoreCard
+        totalPages={totalPages}
+        seoScore={seoScore}
+        spinnerLoading={spinnerLoading}
+      />
       <div className="seo-summary">
         <Card title="SEO Audit: Summary">
-          {seoPageSummaryLoading && <Banner status="info">Loading SEO audit data...</Banner>}
+          {seoPageSummaryLoading && (
+            <Banner status="info">Loading SEO audit data...</Banner>
+          )}
           {/* {error && <Banner status="critical">Failed to load the data</Banner>} */}
           <Stack vertical>
             <Card.Section>

@@ -5,8 +5,10 @@ import { Card, Page, Layout, TextContainer, Text, Button, Collapsible, List, Ico
 import { TitleBar } from "@shopify/app-bridge-react";
 import { useTranslation } from "react-i18next";
 import { ChevronDownMinor, ChevronUpMinor } from '@shopify/polaris-icons';
+import { useNavigate } from 'react-router-dom';
 
 const Sitemaps = () => {
+  const navigate = useNavigate();
   return (
     <>
 
@@ -27,7 +29,7 @@ const Sitemaps = () => {
               <div className="sitemap_top">
                 <Card title="Page indexing" sectioned>
                   <Text>Monitor the indexing status of pages on your site to see which pages Google can find and index on your site, and learn about any indexing problems encountered.</Text>
-                  <button className='sitemap-btn'>upgrade</button>
+                  <button onClick={()=>navigate('/pageIndexing')} className='sitemap-btn'>Configure</button>
 
                   {/* <Button variant='primary' className='srch-opt-btn'>connect</Button> */}
                 </Card>

@@ -1,22 +1,28 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Card, Page, Layout, TextContainer, Text,Spinner } from "@shopify/polaris";
+import {
+  Card,
+  Page,
+  Layout,
+  TextContainer,
+  Text,
+  Spinner,
+} from "@shopify/polaris";
 import { TitleBar } from "@shopify/app-bridge-react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import "../SeoPageSummary/SEOPageSummary.css";
 
-export default function SeoScoreCard({ seoScore = 0, totalPages = 1  , spinnerLoading}) {
-  console.log("SeoSore.jsx")
-  console.log("ScoreCard re rendered");
+export default function SeoScoreCard({
+  seoScore = 0,
+  totalPages = 1,
+  spinnerLoading,
+}) {
   const [progressPercentage, setProgressPercentage] = useState(0);
-  console.log("spinner : "  , spinnerLoading)
   useEffect(() => {
     if (seoScore > 0 && totalPages.length > 0) {
       const calculatedScore = Math.floor((seoScore * 100) / totalPages.length);
-      console.log("Calculated Score:", calculatedScore);
       setProgressPercentage(calculatedScore);
     } else {
-      console.log("Invalid input, setting percentage to 0.");
       setProgressPercentage(0);
     }
   }, [seoScore, totalPages]);
@@ -30,12 +36,13 @@ export default function SeoScoreCard({ seoScore = 0, totalPages = 1  , spinnerLo
     if (percentage < 50) return "rgba(255,0,0,0.1)";
     if (percentage >= 50 && percentage < 90) return "rgba(255, 170, 51 , 0.1)";
     return "rgba(1, 165, 34,0.1)";
-  }
-  const trailColor = (percentage) =>{
+  };
+  const trailColor = (percentage) => {
     if (percentage < 50) return "rgba(255,0,0,0.005)";
-    if (percentage >= 50 && percentage < 90) return "rgba(255, 170, 51 , 0.005)";
+    if (percentage >= 50 && percentage < 90)
+      return "rgba(255, 170, 51 , 0.005)";
     return "rgba(1, 165, 34,0.005)";
-  }
+  };
   return (
     <Page>
       {/* <TitleBar title="SEO Audit" /> */}
@@ -43,19 +50,29 @@ export default function SeoScoreCard({ seoScore = 0, totalPages = 1  , spinnerLo
         <Layout.Section>
           <div className="top">
             <Card sectioned>
-              <div style={{display:"flex" , justifyContent:"space-between"}}><span>Store Seo Score</span>{spinnerLoading && <span>
-                <Spinner color="inkLightest" accessibilityLabel="Small spinner example" size="small" /></span>}</div>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <span>Store Seo Score</span>
+                {spinnerLoading && (
+                  <span>
+                    <Spinner
+                      color="inkLightest"
+                      accessibilityLabel="Small spinner example"
+                      size="small"
+                    />
+                  </span>
+                )}
+              </div>
               <TextContainer>
                 <div style={{ width: "150px", margin: "0 auto" }}>
-                <CircularProgressbar
-                  background
+                  <CircularProgressbar
+                    background
                     value={progressPercentage}
                     text={`${progressPercentage}`}
                     styles={buildStyles({
                       textColor: getColor(progressPercentage),
                       pathColor: getColor(progressPercentage),
                       trailColor: trailColor(progressPercentage),
-                      backgroundColor:bgColor(progressPercentage)
+                      backgroundColor: bgColor(progressPercentage),
                     })}
                   />
                 </div>

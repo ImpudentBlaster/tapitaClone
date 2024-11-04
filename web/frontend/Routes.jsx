@@ -7,6 +7,7 @@ import SeoAuditMain from "./pages/SeoAuditMain/SeoAuditMain";
 import OnPageSeoAudit from "./pages/OnPageSeoAudit/OnPageSeoAudit";
 import SEO_Booster from "./pages/SEOBooster/SEO_Booster";
 import Google_Search_Console from "./pages/GoogleSearchConsole/Google_Search_Console";
+import PageIndexingMain from "./pages/pageIndexingComponent/PageIndexingMain";
 /**
  * File-based routing.
  * @desc File-based routing that uses React Router under the hood.
@@ -43,6 +44,7 @@ export default function Routes({ pages }) {
       <Route path="/OnPageSeoAudit/OnPageSeoAudit" element={<OnPageSeoAudit/>}/>
       <Route path="/SEOBooster/SEO_Booster" element={<SEO_Booster/>}/>
       <Route path="/GoogleSearchConsole/Google_Search_Console" element={<Google_Search_Console/>}/>
+      <Route path="/pageIndexing" element={<PageIndexingMain/>}/>
     </ReactRouterRoutes>
   );
 }

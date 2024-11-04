@@ -21,7 +21,7 @@ const Google_Search_Console = () => {
 
 
   return (
-    <>
+    <div className='searchConsoleMain'>
       <ConnectGoogle />
       <Connect_disable />
       <Sitemaps />
@@ -79,7 +79,7 @@ const Google_Search_Console = () => {
         </Layout>
       </Page>
 
-    </>
+    </div>
   )
 }
 

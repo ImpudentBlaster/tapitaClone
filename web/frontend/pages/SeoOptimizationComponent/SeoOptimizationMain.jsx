@@ -52,7 +52,6 @@
 //   const handleTabChange = (selectedTabIndex) =>
 //     setSelectedTab(selectedTabIndex);
 
-
 //   const renderAuditTable = (sectionData) => {
 //     return (
 //       <IndexTable
@@ -88,7 +87,7 @@
 //               </p>
 //             </IndexTable.Cell>
 //             <IndexTable.Cell>
-            
+
 //               <SeoOptimizationButton/>
 //             </IndexTable.Cell>
 //           </IndexTable.Row>
@@ -119,8 +118,6 @@
 // export default SeoOptimizationMain;
 // seooptimizationmain.js:
 
-
-
 import React, { useState, useEffect, useContext } from "react";
 import { Page, Card, Tabs, IndexTable, Button } from "@shopify/polaris";
 import axios from "axios";
@@ -130,7 +127,7 @@ import { useNavigate } from "react-router-dom";
 import SeoOptimizationButton from "./SeoOptimizationButton";
 
 const SeoOptimizationMain = () => {
-  console.log("HomeOnPageAudit.jsx")
+  console.log("HomeOnPageAudit.jsx");
   const [totalPages, setTotalPages] = useState(0);
 
   const navigate = useNavigate();
@@ -154,7 +151,7 @@ const SeoOptimizationMain = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log('hello');
+        console.log("hello");
         // Get the current URL
         const currentUrl = window.location.href;
         console.log(currentUrl);
@@ -162,23 +159,34 @@ const SeoOptimizationMain = () => {
         const urlParams = new URLSearchParams(window.location.search);
 
         // Extract the 'shop' parameter from the URL
-        const storeName = urlParams.get('shop');
-
+        const storeName = urlParams.get("shop");
 
         // const response = await axios.get("/api/audit?shop=demosaurav.myshopify.com");
-        const response = await axios.get(`https://server-page-xo9v.onrender.com/api/audit/${storeName}`);
-        console.log('hello');
+        const response = await axios.get(
+          `https://server-page-xo9v.onrender.com/api/audit/${storeName}`
+        );
+        console.log("hello");
         const data = response.data;
         console.log(data, " onpage seo audit ");
         setAuditData({
-          home: [{ pageUrl: "https://demosaurav.myshopify.com/", title: "HomePage" }] || [],
+          home:
+            [
+              {
+                pageUrl: "https://demosaurav.myshopify.com/",
+                title: "HomePage",
+              },
+            ] || [],
           products: data.products || [],
           collections: data.collections || [],
           blogs: data.blogs || [],
           others: data.pages || [],
         });
-        setTotalPages(data.totalPages + 1)
-        console.log(totalPages, data.totalPages, "totalpages on page seo audit")
+        setTotalPages(data.totalPages + 1);
+        console.log(
+          totalPages,
+          data.totalPages,
+          "totalpages on page seo audit"
+        );
       } catch (error) {
         console.error("Failed to fetch audit data", error);
       }
@@ -189,13 +197,16 @@ const SeoOptimizationMain = () => {
   const handleTabChange = (selectedTabIndex) =>
     setSelectedTab(selectedTabIndex);
 
-
   const renderAuditTable = (sectionData) => {
     return (
       <IndexTable
         resourceName={{ singular: "audit", plural: "audits" }}
         itemCount={sectionData.length}
-        headings={[{ title: "Page" }, { title: "Status" }, { title: "Actions" }]}
+        headings={[
+          { title: "Page" },
+          { title: "Status" },
+          { title: "Actions" },
+        ]}
         selectable={false}
       >
         {sectionData.map(({ id, title, handle, pageUrl }) => (
@@ -226,7 +237,6 @@ const SeoOptimizationMain = () => {
               </p>
             </IndexTable.Cell>
             <IndexTable.Cell>
-
               <SeoOptimizationButton />
             </IndexTable.Cell>
           </IndexTable.Row>
@@ -242,20 +252,18 @@ const SeoOptimizationMain = () => {
     // navigate("/SEO_Booster");
     // navigate("/pagename");
     navigate("/SeoOptimizationMain");
-
   };
   return (
-
-
-
-    <Page title="Meta " backAction={{ content: 'Products', onAction: handleBack }}>
+    <Page
+      title="Meta "
+      backAction={{ content: "Products", onAction: handleBack }}
+    >
       <Tabs tabs={TABS} selected={selectedTab} onSelect={handleTabChange}>
         <Card sectioned>
           {renderAuditTable(auditData[TABS[selectedTab].id])}
         </Card>
       </Tabs>
     </Page>
-
   );
 };
 

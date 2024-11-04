@@ -6,7 +6,7 @@ import { Context } from "../../components/DataContext";
 import './HomeOnPageSeoAudit.css'
 
 const HomeOnPageSeoAudit = () => {
-  console.log("HomeOnPageAudit.jsx")
+  const {siteUrls , setSiteUrls} = useContext(Context)
   const [totalPages , setTotalPages] = useState(0);
 
   const navigate = useNavigate();
@@ -32,16 +32,17 @@ const HomeOnPageSeoAudit = () => {
       try {
         const response = await axios.get("/api/audit");
         const data = response.data;
-        console.log(data, " onpage seo audit ");
-        setAuditData({
-          home: [{ pageUrl: "https://039190-ff.myshopify.com/" }] || [],
+
+        const temp ={
+          home: [{title:"Home" , pageUrl:"https://039190-ff.myshopify.com/" , handle:"HomePage"}] || [],
           products: data.products || [],
           collections: data.collections || [],
           blogs: data.blogs || [],
           others: data.pages || [],
-        });
+        }
+        setAuditData(temp);
+        setSiteUrls(temp)
        setTotalPages(data.totalPages+1)
-        console.log(totalPages , data.totalPages , "totalpages on page seo audit")
       } catch (error) {
         console.error("Failed to fetch audit data", error);
       }

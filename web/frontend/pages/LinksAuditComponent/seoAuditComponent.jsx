@@ -4,11 +4,9 @@ import { Context } from "../../components/DataContext";
 import "./auditComponent.css";
 import { useNavigate } from "react-router-dom";
 
-function SeoAuditComponent({ pageUrls, eachUrlData, loading ,error}) {
-  console.log("SeoAuditComponent.jsx");
+function SeoAuditComponent({ pageUrls, eachUrlData, loading, error }) {
   const navigate = useNavigate();
   const { data, setData } = useContext(Context);
-  console.log(eachUrlData, "each Url Data from seoAuditComponent");
 
   function handleAuditClick(responseUrl) {
     let selectedUrl = "";
@@ -46,11 +44,11 @@ function SeoAuditComponent({ pageUrls, eachUrlData, loading ,error}) {
               <Button plain>Quick Fix</Button>
             </div>
             </div> */}
-            
+
             {/* {error && (
               <Banner status="critical">Failed to load the data</Banner>
             )} */}
-            {loading? (
+            {loading ? (
               <Banner status="info">Loading Page Urls</Banner>
             ) : (
               pageUrls.map((responseUrls, index) => (
@@ -60,7 +58,6 @@ function SeoAuditComponent({ pageUrls, eachUrlData, loading ,error}) {
                     <p style={{ padding: "1.5rem 0" }}>{responseUrls}</p>
                     <div style={{ display: "flex", flexDirection: "column" }}>
                       <button
-                      
                         onClick={() => {
                           handleAuditClick(responseUrls);
                         }}

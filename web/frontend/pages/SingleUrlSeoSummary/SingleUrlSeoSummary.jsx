@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   Card,
   Collapsible,
@@ -35,8 +35,6 @@ const SingleUrlSeoSummary = ({ error }) => {
 
   useEffect(() => {
     if (response) {
-      console.log(response);
-      console.log("useEffect");
       const audits = response.lighthouseResult.audits;
       const auditRefs = response.lighthouseResult.categories.seo.auditRefs;
       const temp = auditRefs.map((item) => {
@@ -71,8 +69,7 @@ const SingleUrlSeoSummary = ({ error }) => {
             title: audit.title || audit.id,
           }))
       );
-      console.log(temp, "temp");
-      console.log(critical);
+
       setLoading(false);
     }
   }, [response]);

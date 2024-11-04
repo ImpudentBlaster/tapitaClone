@@ -225,7 +225,7 @@ mongoose.connect("mongodb+srv://spuspam111:Sp123456@cluster0.0taaaup.mongodb.net
 
 
 const shopifyStore = 'impudentblaster';
-const accessToken = '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';
+const accessToken = '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';
 // const scriptUrl = 'https://developertechhub.com/custom.js';
 // const scriptUrl = 'https://server-page-xo9v.onrender.com';
 // const scriptUrl = "https://server-page-1.onrender.com/static/product-title-script.js";
@@ -327,6 +327,29 @@ app.get('/api/shops', async (req, res) => {
   }
 });
 
+async function isPageIndexed(url) {
+  const apiKey = "AIzaSyAdvUFRlWudegAbuN7OZsvzTHbXdhhA2Uk";
+  const cx = "900b26c10f6ec4f6e";
+  const query = `site:${url}`;
+  const apiUrl = `https://www.googleapis.com/customsearch/v1?q=${query}&key=${apiKey}&cx=${cx}`;
+
+  try {
+    const response = await axios.get(apiUrl);
+    const results = response.data.items;
+    if (results && results.length > 0) {
+      return true;
+    } else {
+
+      return false;
+    }
+  } catch (error) {
+    console.error(
+      "Error:",
+      error.response ? error.response.data : error.message
+    );
+    return false;
+  }
+}
 
 
 
@@ -342,18 +365,16 @@ app.get("/api/audit", async (req, res) => {
   try {
     const promises = arrayOfPages.map((url) => getData(url));
     const result = await Promise.all(promises);
-   console.log(result)
     const structuredResult = {
       products: result[0],
       collections: result[1],
       blogs: result[2],
       pages: result[3],
     };
-    console.log(structuredResult.products[0].count,structuredResult.blogs[0].count,structuredResult.collections[0].count,structuredResult.pages[0].count,)
+
     const count = structuredResult.products[0].count+structuredResult.blogs[0].count+structuredResult.collections[0].count+structuredResult.pages[0].count
     res.send({...structuredResult , totalPages:count});
   } catch (error) {
-    console.error("Error fetching pages data:", error);
     res.status(500).send("Failed to fetch data");
   }
 });
@@ -369,40 +390,33 @@ async function getData(urlEndpoint) {
         },
       }
     );
+    const result = await Promise.all(
+      pagesResponse.data[urlEndpoint].map(async (item) => {
+        const pageUrl =
+          urlEndpoint === "custom_collections"
+            ? `https://039190-ff.myshopify.com/collections/${item.handle}`
+            : `https://039190-ff.myshopify.com/${urlEndpoint}/${item.handle}`;
 
-    pagesResponse.data[urlEndpoint].map((item) => {
-      if (urlEndpoint === "custom_collections")
-        console.log(`${shopifyStore}/collections/${item.handle}`);
-      else {
-        console.log(`${shopifyStore}/${urlEndpoint}/${item.handle}`);
-      }
-    });
-    return pagesResponse.data[urlEndpoint].map((item) => {
-      if (urlEndpoint === "custom_collections") {
+        const pageIsIndexed = await isPageIndexed(pageUrl);
+
         return {
           id: item.id,
           handle: item.handle,
           title: item.title,
-          pageUrl: `https://039190-ff.myshopify.com/collections/${item.handle}`,
-          count:pagesResponse.data[urlEndpoint].length
+          pageUrl: pageUrl,
+          count: pagesResponse.data[urlEndpoint].length,
+          pageIsIndexed: pageIsIndexed,
         };
-      } else {
-        return {
-          id: item.id,
-          handle: item.handle,
-          title: item.title,
-          pageUrl: `https://039190-ff.myshopify.com/${urlEndpoint}/${item.handle}`,
-          count:pagesResponse.data[urlEndpoint].length
-        };
-      }
-    });
+      })
+    );
+
+    return result;
   } catch (error) {
     console.error(`Error fetching data for ${urlEndpoint}:`, error);
     return [];
   }
 }
   
-
 
 
 

@@ -21,12 +21,13 @@ export default function SingleUrlScoreCard() {
     if (percentage < 50) return "rgba(255,0,0,0.1)";
     if (percentage >= 50 && percentage < 90) return "rgba(255, 170, 51 , 0.1)";
     return "rgba(1, 165, 34,0.1)";
-  }
-  const trailColor = (percentage) =>{
+  };
+  const trailColor = (percentage) => {
     if (percentage < 50) return "rgba(255,0,0,0.1)";
-    if (percentage >= 50 && percentage < 90) return "rgba(255, 170, 51 , 0.005)";
+    if (percentage >= 50 && percentage < 90)
+      return "rgba(255, 170, 51 , 0.005)";
     return "rgba(1, 165, 34,0.005)";
-  }
+  };
   return (
     <Page>
       {/* <TitleBar title="SEO Audit" /> */}
@@ -37,14 +38,14 @@ export default function SingleUrlScoreCard() {
               <TextContainer>
                 <div style={{ width: "150px", margin: "0 auto" }}>
                   <CircularProgressbar
-                  background
+                    background
                     value={progressPercentage}
                     text={`${progressPercentage}`}
                     styles={buildStyles({
                       textColor: getColor(progressPercentage),
                       pathColor: getColor(progressPercentage),
                       trailColor: trailColor(progressPercentage),
-                      backgroundColor:bgColor(progressPercentage)
+                      backgroundColor: bgColor(progressPercentage),
                     })}
                   />
                 </div>
