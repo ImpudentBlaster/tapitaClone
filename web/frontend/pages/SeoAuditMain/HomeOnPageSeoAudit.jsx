@@ -30,9 +30,9 @@ const HomeOnPageSeoAudit = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/audit");
+        const response = await axios.get("/api/seoAudit");
         const data = response.data;
-
+        console.log(data)
         const temp ={
           home: [{title:"Home" , pageUrl:"https://039190-ff.myshopify.com/" , handle:"HomePage"}] || [],
           products: data.products || [],
@@ -67,6 +67,7 @@ const HomeOnPageSeoAudit = () => {
   const renderAuditTable = (sectionData) => {
     return (
       <IndexTable
+      key={1}
         resourceName={{ singular: "audit", plural: "audits" }}
         itemCount={sectionData.length}
         headings={[{ title: "URL" }, { title: "Status" }, { title: "Actions" }]}

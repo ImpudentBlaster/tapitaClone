@@ -55,7 +55,7 @@ function SeoAuditComponent({ pageUrls, eachUrlData, loading, error }) {
                 <>
                   {" "}
                   <div key={index} className="audit-individual-urls">
-                    <p style={{ padding: "1.5rem 0" }}>{responseUrls}</p>
+                    <p key={index} style={{ padding: "1.5rem 0" }}>{responseUrls}</p>
                     <div style={{ display: "flex", flexDirection: "column" }}>
                       <button
                         onClick={() => {

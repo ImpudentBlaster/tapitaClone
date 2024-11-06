@@ -371,21 +371,26 @@ const ToggleConfigButton = ({ card, navigate }) => {
     // const urlParams = new URLSearchParams(window.location.search);
     // const extractedShopName = urlParams.get("shop");
     // console.log(urlParams , "urlParams")
-    const currentUrl = window.location.href;
-    console.log(currentUrl, "currentUrl");
-    console.log(window.location)
+    // const currentUrl = window.location.href;
+    // console.log(currentUrl, "currentUrl");
+    // console.log(window.location)
+    // const urlParams = new URLSearchParams(window.location.search);
     const urlParams = new URLSearchParams(window.location.search);
+        const extractedShopName = urlParams.get("shop");
+        console.log("shopNmae", extractedShopName);
 
     // Extract the 'shop' parameter from the URL
-    const extractedShopName = urlParams.get("shop");
-    if (extractedShopName) {
-      setShopName(extractedShopName);
-      fetchEnabledState(extractedShopName);
-      fetchEnabledState_ls(extractedShopName);
-    } else {
-      console.error("Failed to extract shop name from URL.");
-      setLoading(false);
-    }
+    setShopName("impudentblaster.myshopify.com");
+    fetchEnabledState("impudentblaster.myshopify.com")
+    fetchEnabledState_ls("impudentblaster.myshopify.com")
+    // const extractedShopName = urlParams.get("shop");
+    // if (extractedShopName) {
+    //   fetchEnabledState(extractedShopName);
+    //   fetchEnabledState_ls(extractedShopName);
+    // } else {
+    //   console.error("Failed to extract shop name from URL.");
+    //   setLoading(false);
+    // }
   }, []); // Empty dependency array ensures this runs only once when the component mounts
 
   // Fetch the saved state from the API
@@ -424,7 +429,7 @@ const ToggleConfigButton = ({ card, navigate }) => {
     try {
       const newEnabledState = !isEnabled;
       setIsEnabled(newEnabledState);
-      console.log(shopName);
+      console.log(shopName , "shopname");
       const response = await fetch(
         `https://server-page-xo9v.onrender.com/update-state/${shopName}/${card.schemaKey}/${newEnabledState}`,
         {

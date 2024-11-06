@@ -26,6 +26,7 @@ export default function App() {
               <Link to="/GoogleSearchConsole/Google_Search_Console">
                 Google Search Console
               </Link>
+              <Link to='/pagination'>Pagination</Link>
             </NavMenu>
             <Routes pages={pages} />
           </ContextProvider>

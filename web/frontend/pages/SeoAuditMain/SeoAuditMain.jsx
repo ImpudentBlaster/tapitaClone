@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { XMLParser } from "fast-xml-parser";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import SEOPageSummary from "../SeoPageSummary/SEOPageSummary";
 import SeoAuditComponent from "../LinksAuditComponent/seoAuditComponent";
-import { FaRegSquarePlus } from "react-icons/fa6";
-import OnPageSeoAudit from "./../OnPageSeoAudit/OnPageSeoAudit";
 import HomeOnPageSeoAudit from "./HomeOnPageSeoAudit";
-import { TitleBar } from "@shopify/app-bridge-react";
 import { Banner } from "@shopify/polaris";
-import SeoOptimizationMain from "../SeoOptimizationComponent/SeoOptimizationMain";
-import PageIndexingMain from "../pageIndexingComponent/PageIndexingMain";
 import Temp from "../tempFolder/Temp";
 
 function SeoAuditMain() {
