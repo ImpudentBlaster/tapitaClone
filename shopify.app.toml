@@ -3,7 +3,7 @@
 client_id = "d2dfb34fff28b774ea7b2cbc2c9ed02d"
 name = "tapitaClone"
 handle = "tapitaclone-1"
-application_url = "https://involving-disclose-hazardous-union.trycloudflare.com"
+application_url = "https://indonesia-however-frame-obligations.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_content,read_online_store_pages,read_products,read_themes,write_c
 
 [auth]
 redirect_urls = [
-  "https://involving-disclose-hazardous-union.trycloudflare.com/auth/callback",
-  "https://involving-disclose-hazardous-union.trycloudflare.com/auth/shopify/callback",
-  "https://involving-disclose-hazardous-union.trycloudflare.com/api/auth/callback"
+  "https://indonesia-however-frame-obligations.trycloudflare.com/auth/callback",
+  "https://indonesia-however-frame-obligations.trycloudflare.com/auth/shopify/callback",
+  "https://indonesia-however-frame-obligations.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

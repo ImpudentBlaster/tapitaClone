@@ -77,7 +77,7 @@ app.get("/api/getProductsData", async (req, res) => {
 });
 
 const shopifyStore = "impudentblaster";
-const accessToken = "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";
+const accessToken = "random_access_token";
 // const scriptUrl = 'https://developertechhub.com/custom.js';
 // const scriptUrl = 'https://server-page-xo9v.onrender.com';
 // const scriptUrl = "https://server-page-1.onrender.com/static/product-title-script.js";
@@ -226,7 +226,7 @@ async function getUrlData(urlEndpoint) {
       `https://039190-ff.myshopify.com/admin/api/2024-10/${urlEndpoint}.json`,
       {
         headers: {
-          "X-Shopify-Access-Token": accessToken,
+          "X-Shopify-Access-Token": "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",
           "Content-Type": "application/json",
         },
       }
@@ -250,7 +250,7 @@ async function getUrlData(urlEndpoint) {
 
     return result;
   } catch (error) {
-    console.error(`Error fetching data for ${urlEndpoint}:`, error);
+    console.error(`Error fetching data for ${urlEndpoint}:`, error.message);
     return [];
   }
 }
@@ -285,7 +285,7 @@ async function getData(urlEndpoint) {
       `https://039190-ff.myshopify.com/admin/api/2024-10/${urlEndpoint}.json`,
       {
         headers: {
-          "X-Shopify-Access-Token": accessToken,
+          "X-Shopify-Access-Token": "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",
           "Content-Type": "application/json",
         },
       }
